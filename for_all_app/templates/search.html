@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% if  product %}
+        
+            {% for prod in product  %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src=" ../../for_all_app/static/img/{{prod.title}}.jpeg" class="card-img-top" alt="{{ prod.title}}" height="250px" width="415px">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ prod.title}}</h5>
+                            <p>{{prod.price}}</p>
+                            <a href="{% url 'buy' prod.id %}" class="btn btn-primary">View more</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Your search was not found. </div>
+                <div class="card-body">
+                <p class="card-text">Please go back to the <a href="{% url 'home' %} " class="link-danger">home</a> page and scroll our catalogue or search for another item</p>
+            </div>
+        {% endif %}
+                
+             
+        
+        
+    </div>
+</div>
+
+{% endblock content %}

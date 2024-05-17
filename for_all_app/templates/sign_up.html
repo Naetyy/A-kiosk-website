@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+  {% comment %} <form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+  </form> {% endcomment %}
+
+  <form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+
+    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create an account with Bobs</h5>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="id_username">Username</label>
+      <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" class="form-control form-control-lg">
+      <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="id_password">Password</label>
+      <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" class="form-control form-control-lg">
+      <ul>
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+    </div>
+
+    <div class="form-outline mb-4">
+      <label for="id_password2">Password confirmation:</label>
+      <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" class="form-control form-control-lg">
+      <span class="helptext">Enter the same password as before, for verification.</span>
+    </div>
+
+    <div class="pt-1 mb-4">
+      <button type="submit" class="btn btn-dark btn-lg btn-block">Sign up</button>
+      <input type="hidden" name="next" value="{% url 'signup' %}">
+    </div>
+  </form>
+{% endblock content %}

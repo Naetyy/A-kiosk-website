@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+    
+    <div class="card mb-3">
+            <img src="../../for_all_app/static/img/{{product.title}}.jpeg" class="rounded mx-auto d-block" alt="{{product.title}}" height="500px" width="500px">
+            {% comment %} <img src="" class="justify-content-center" alt="{{product.title}}"> {% endcomment %}
+            <div class="card-body">
+            <h2 class="text-center">{{product.title}}        ${{product.price}}</h2>
+            <h2 class="text-center">{{product.quantity}} items remaining hurry!</h2>
+        <p class="text-center"><h4 class="text-center">{{product.description}}</h4></p>
+        <p>
+            <form action= "{% url 'cart' product.id %}" method="GET" class="text-center">'
+                <div class="container">
+                    <input  type="number" name="qty" placeholder="Your quantity">
+                    <button class="btn btn-primary">Add to cart</button>
+                </div>
+            </form>
+        </p>
+        </div>
+    </div>
+
+    {% if category %}
+    <p>
+        <h2 class="text-center">Because you viewed {{product.title}}, Bobs recommends you:</h2>
+    </p>
+        {% for categ in category  %}
+            <div class="col-md-4 ">
+                <div class="card" style="width: 18rem;">
+                    <div class="text-center">
+                        <a href="{% url 'buy' categ.id %}">
+                            <img src="../../for_all_app/static/img/{{categ.title}}.jpeg" class="rounded" alt="..."height="200px" width="200px">
+                        </a>
+                      </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ categ.title}} ${{categ.price}}</h5>
+                        <a href="{% url 'buy' categ.id %}"><h6>Check it out!<h6></a>
+                    </div>
+                </div> 
+            </div>       
+        {% endfor %}
+    {% else %}
+        <p>
+            <h2 class="text-center">Sorry, no recommendations for this product</h2>
+        </p>
+    {% endif %}
+
+
+{% endblock content %}

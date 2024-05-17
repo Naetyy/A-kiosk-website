@@ -1,0 +1,58 @@
+{% load static %}
+<header>
+         
+</header>
+<div class="alert alert-primary" role="alert">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a href="{% url 'home' %}">
+        <img src="{% static '/img/logo2.png' %}" alt="logo" width="40px" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Sign up</a>
+          </li>
+        </ul>
+        <style>
+          .form-banner{
+            width:max-content;
+           display:flex;
+           align-items:center;
+           gap:10px;
+          } 
+          .form-banner h5,.logout{
+              width:max-content;
+              font-size:15px;
+            }
+        </style>
+        <form action="{% url 'search' %}" class="d-flex form-banner" role="search" >
+          <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+
+        {% if user.is_authenticated %}
+            <div >
+             <h5 class=" username m-0" role="alert">Hallo, {{user.username}}</h5> 
+            </div>
+            <div>
+              <a href="{% url 'logout' %}" class="alert alert-danger logout" role="alert">Logout</a>
+            </div>
+        {%else%}
+          <div class="alert alert-dark" role="alert">
+            <a href="{% url 'login' %}">Login_Here</a>
+          </div>
+        {% endif %} 
+        </form>
+      </div>
+    </div>
+</div> 
+</nav>

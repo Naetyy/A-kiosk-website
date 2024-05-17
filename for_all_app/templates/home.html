@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block content %}
+
+  <p>{{products.title}}</p>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for prod in products  %}
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="for_all_app/static/img/{{prod.title}}.jpeg" class="card-img-top" alt="{{ prod.title}}" height="300px" width="415px">
+              <div class="card-body">
+                <h5 class="card-title"> {{ prod.title}}</h5>
+                <p>{{prod.price}}</p>
+                <a href="{% url 'buy' prod.id %}" class="btn btn-primary">View more</a>
+              </div>
+          </div> 
+        </div>       
+      {% endfor %}
+    </div>
+  </div>
+   
+{% endblock content %}

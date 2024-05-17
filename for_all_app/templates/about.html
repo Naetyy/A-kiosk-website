@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<div class="about-section">
+    <div class="inner-width">
+      <h1>Our Background</h1>
+      <div class="border"></div>
+      <div class="about-section-row">
+        <div class="about-section-col">
+          <div class="about">
+            <p>
+              Bobs started very small 10 yeaars ago with just one emplyee Mr Bob, the owner. This was way before
+              Flo Filling Station had not yet grown to it current state. The main renovation of the Flo Filling Station
+              along with the transformation of Bobs Kiosk occured 5 years ago and that was the start of real business.
+              After the renovation we started seeing Bobs Kiosk become a one stop shop for most students from The National 
+              University of Science And Technology as well as passer bys along the Gwanda Road. We have witnessed Bobs 
+              Kiosk grow and we have also introduced a bottle store to suite the needs of those that enjoy alcohol and
+              finally we stand at 3 employees. 
+            </p>
+            
+            
+            {% comment %} <p><b>We are along Gwanda Road Opposite the Students Accomodation Complex. Less than 500m to the east of NUST</b><p> {% endcomment %}
+          
+          </div>
+          <div class="card text-bg-primary mb-3 m-auto" style="max-width: 18rem;">
+            <div class="card-header">Where To Find Us</div>
+            <div class="card-body">
+              <p class="card-text">We are along <em>Gwanda Road</em> opposite the <em>Students Accomodation Complex</em>.</p>
+              <p class="card-text">In other words we are less than <em>500m to the East of NUST</em></p>
+            </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section mt-2">
+    <h3>Visit Bobs</h3>
+    <p></p>
+    <p>At bobs, we offer a thrilling shoping experience and we are the best in all Riverside</p>
+    <p>Shop with Us for a transparent and efficient purchasing environment!!</p>
+
+  </div>
+    
+{% endblock content %}
+
